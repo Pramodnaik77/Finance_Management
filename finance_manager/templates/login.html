@@ -1,0 +1,94 @@
+{% extends 'basic.html' %}
+
+{% block title %}
+    Login page
+{% endblock %}
+
+{% block css %}
+body{
+    background-image: linear-gradient(#ec2cff,#4242e6);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+p{
+    font: 570 45px Arial;
+    -webkit-text-fill-color: black;
+    -webkit-text-stroke: 1px;
+    color:black;
+    margin-left:150px;
+}
+.container{
+    position: relative;
+    margin-top: 80px;
+    width:525px;
+    height:585px;
+    padding-top:45px;
+    padding-left: 52px;
+
+    border-radius: 13px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+#sub{
+    margin-left: 80px;
+    width: 270px;
+    margin-top: 50px;
+    padding:12px;
+    background-image: linear-gradient(#ec2cff,#4242e6);
+}
+
+.form-control{
+    width:355px;
+    height:52px;
+    margin-left:31px;
+    background-color:#dfdfdf;
+}
+.fa{
+    margin-left:31px;
+}
+.lab{
+
+    margin-top:29px;
+    margin-bottom:16px;
+    color: #6a6060;
+}
+.form-check{
+    margin-left:31px;
+}
+
+{% endblock %}
+{% block body %}
+{% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+      <strong style="margin-left: 565px;">{{message}}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times</span>
+      </button>
+    </div>
+{%endfor%}
+    <div class="container">
+        <p>Login</p>
+         <form action="" method="post">{% csrf_token %}
+          <div class="form-group">
+              <i class="fa fa-user icon"></i>
+            <label for="name" class="lab">User Name/ Email</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name"required>
+
+          </div>
+          <div class="form-group">
+              <i class="fa fa-key icon"></i>
+            <label for="password" class="lab">Password</label>
+            <input type="password" class="form-control" id="password"   name="password" placeholder="Enter password" required>
+          </div>
+          <div class="form-group form-check">
+            <input type="checkbox" class="click form-check-input" id="check" required>
+            <label class="form-check-label" for="check"  >I accept all the terms and conditions</label>
+          </div>
+          <button type="submit" id="sub" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+
+
+{% endblock %}
